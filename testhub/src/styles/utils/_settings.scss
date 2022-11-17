@@ -1,0 +1,73 @@
+//maps
+$font-size: (basic: 14px,
+    size1: 48px,
+    size2: 36px,
+    size3: 24px,
+    paragraph: 18px,
+);
+/* $breakpoints: (mobile: 576px,
+    tablet: 888px,
+); */
+/*  -------------------- colors ---------------------- */
+$color-1: #E6E8F4;
+$color-2: #FFF;
+$color-3:black;
+$color-4: rgb(242, 242, 242);
+/*  -------------------- gaps ---------------------- */
+/* $large-gap: 60px;
+$medium-gap: 30px;
+$small-gap: 15px; */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    color: $color-3;
+}
+
+/* html {
+    scroll-behavior: smooth;
+} */
+
+body {
+    height: auto;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: $color-1;
+}
+
+header,
+.max__width {
+    max-width: 1240px;
+    margin: 0 auto 0 auto;
+
+}
+
+header {
+    width: 100%;
+}
+
+/* main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    padding: 0 $medium-gap 240px $medium-gap;
+
+} */
+
+/* @media screen and (max-width: map-get($breakpoints, mobile)) {
+
+    main {
+        padding: 0 $small-gap 240px $small-gap;
+    }
+} */

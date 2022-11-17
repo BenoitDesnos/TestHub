@@ -1,0 +1,45 @@
+.games {
+    width: 100%;
+    max-width: 1224px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__card {
+        padding: 20px;
+        background-color: $color-2;
+        margin: 20px;
+        width: 300px;
+        min-height: 200px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        box-shadow: rgb(0 0 0 / 10%) 0px 2px 5px;
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            transform: translateY(-10px);
+            transition: transform 0.2s ease-in-out;
+
+            i {
+                color: rgb(255, 147, 69);
+                opacity: 1;
+            }
+        }
+
+        & * {
+            padding: 10px 20px;
+            text-align: center;
+            font-size: map-get($font-size, paragraph) * 1.2;
+        }
+
+        i {
+            font-size: map-get($font-size, size2);
+            color: rgb(43, 135, 209);
+            opacity: 0.5;
+        }
+    }
+}
