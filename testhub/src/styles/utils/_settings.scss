@@ -14,9 +14,9 @@ $color-2: #FFF;
 $color-3:black;
 $color-4: rgb(242, 242, 242);
 /*  -------------------- gaps ---------------------- */
-/* $large-gap: 60px;
+$large-gap: 60px;
 $medium-gap: 30px;
-$small-gap: 15px; */
+$small-gap: 15px;
 
 
 * {
@@ -41,12 +41,7 @@ body {
     background-color: $color-1;
 }
 
-header,
-.max__width {
-    max-width: 1240px;
-    margin: 0 auto 0 auto;
 
-}
 
 header {
     width: 100%;

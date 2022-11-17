@@ -9,16 +9,36 @@
         padding: 20px;
         background-color: $color-2;
         margin: 20px;
-        width: 300px;
+        width: 350px;
         min-height: 200px;
         border-radius: 5px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         flex-direction: column;
 
         box-shadow: rgb(0 0 0 / 10%) 0px 2px 5px;
         transition: transform 0.2s ease-in-out;
+
+        &.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+            position: relative;
+
+            &::after {
+                content: "Coming soon !";
+                font-size: map-get($font-size, size2);
+                font-weight: 900;
+                color: rgb(255, 147, 69);
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+
+            }
+        }
 
         &:hover {
             transform: translateY(-10px);
@@ -33,11 +53,16 @@
         & * {
             padding: 10px 20px;
             text-align: center;
-            font-size: map-get($font-size, paragraph) * 1.2;
+            font-size: map-get($font-size, size3);
+        }
+
+        p {
+            font-size: map-get($font-size, basic) * 1.2;
+            line-height: 1.5;
         }
 
         i {
-            font-size: map-get($font-size, size2);
+            font-size: map-get($font-size, size1);
             color: rgb(43, 135, 209);
             opacity: 0.5;
         }
