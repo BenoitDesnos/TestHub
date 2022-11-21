@@ -1,0 +1,29 @@
+.reaction {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(43, 135, 209);
+    height: 540px;
+
+    &.await {
+        background-color: $color-error;
+    }
+
+    &.error {
+        background-color: $color-neutral;
+    }
+
+    &.is-active {
+        background-color: $color-success;
+    }
+
+    &.success {
+        background-color: $color-neutral;
+    }
+
+    &__title {
+
+        color: $color-2;
+    }
+}
