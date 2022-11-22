@@ -5,6 +5,7 @@
     align-items: center;
     background-color: rgb(43, 135, 209);
     height: 540px;
+    cursor: pointer;
 
     &.await {
         background-color: $color-error;
@@ -14,12 +15,13 @@
         background-color: $color-neutral;
     }
 
-    &.is-active {
+    &.react {
         background-color: $color-success;
     }
 
-    &.success {
+    &.ended {
         background-color: $color-neutral;
+        cursor: auto;
     }
 
     &__title {

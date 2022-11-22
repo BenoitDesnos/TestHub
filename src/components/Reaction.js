@@ -1,59 +1,95 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 function Reaction() {
-  const [color, setColor] = useState(1);
+  const [testState, setTestState] = useState("start");
   const [firstClick, setFirstClick] = useState(0);
   const [secondClick, setSecondClick] = useState(0);
   const [timeOutGenerator, setTimeOutGenerator] = useState(0);
-  const [myTimeOut, setMyTimeOut] = useState(0);
+  const [result, setResult] = useState(0);
+  const myTimeOut = useRef(null);
 
-  useEffect(() => {
-    if (timeOutGenerator !== 0) {
-      setTimeout(() => {
-        setColor(4);
-      }, timeOutGenerator);
-    }
-  }, [timeOutGenerator]);
-
-  function handleColorState(e) {
-    switch (color) {
-      case 1:
+  function handletestState(e) {
+    switch (testState) {
+      case "start":
         setFirstClick(e.timeStamp);
         setTimeOutGenerator(Math.random() * 3500 + 1500);
-        setColor(2);
+        setTestState("await");
         break;
-      case 2:
-        console.log(timeOutGenerator);
+      case "await":
+        setSecondClick(e.timeStamp);
         break;
-      case 3:
+      case "error":
+        setFirstClick(e.timeStamp);
+        setTimeOutGenerator(Math.random() * 3500 + 1500);
+        setTestState("await");
         break;
-      case 4:
+      case "react":
+        setSecondClick(e.timeStamp);
         break;
-      case 5:
+      case "ended":
+        setResult(Number(result.toFixed(2)));
         break;
-
       default:
+        setTestState("start");
         break;
     }
   }
 
+  // this useEffect is used to be able to use timeOutGenerator in setTimeout while in case "await"
+  useEffect(() => {
+    if (timeOutGenerator !== 0) {
+      myTimeOut.current = setTimeout(() => {
+        setTestState("react");
+      }, timeOutGenerator);
+    }
+  }, [timeOutGenerator]);
+
+  // this useEffect is used when secondClick happens before completion of timeOut
+  useEffect(() => {
+    if (testState === "await") {
+      setTestState("error");
+    } else if (testState === "react") {
+      let deltaClicks = secondClick - firstClick;
+      let reflexeTime = deltaClicks - timeOutGenerator;
+      let reflexeRounded = Number(reflexeTime.toFixed(2));
+      setResult(reflexeRounded);
+      setTestState("ended");
+    }
+    return () => {
+      clearTimeout(myTimeOut.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [secondClick]);
+
   return (
     <div
       className={
-        color === 1
+        testState === "start"
           ? "reaction"
-          : color === 2
+          : testState === "await"
           ? "reaction await"
-          : color === 3
+          : testState === "error"
           ? "reaction error"
-          : color === 4
-          ? "reaction is-active"
-          : color === 5
-          ? "reaction success "
+          : testState === "react"
+          ? "reaction react"
+          : testState === "ended"
+          ? "reaction ended"
           : "reaction"
       }
-      onMouseDown={(e) => handleColorState(e)}
+      onMouseDown={(e) => handletestState(e)}
     >
-      <h1 className="reaction__title">Reaction Time Test</h1>
+      {testState === "start" ? (
+        <h1 className="reaction__title">Reaction Time Test</h1>
+      ) : testState === "await" ? (
+        <h1 className="reaction__title">Wait for Green</h1>
+      ) : testState === "error" ? (
+        <h1 className="reaction__title">Too soon..</h1>
+      ) : testState === "react" ? (
+        <h1 className="reaction__title">Click !</h1>
+      ) : testState === "ended" ? (
+        <h1 className="reaction__title">Your result is {result} ms</h1>
+      ) : (
+        <h1 className="reaction__title">Reaction Time Test</h1>
+      )}
     </div>
   );
 }
