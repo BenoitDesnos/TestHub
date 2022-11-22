@@ -5,7 +5,7 @@ function Navigation() {
       <ul className="nav__home">
         <li>
           <NavLink
-            href="/"
+            to="/"
             end
             className={(nav) =>
               nav.isActive ? "nav__home__link is-active" : "nav__home__link "

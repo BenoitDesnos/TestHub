@@ -1,3 +1,13 @@
+@keyframes pulseOpacity {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0.5;
+    }
+}
+
 .reaction {
     width: 100%;
     display: flex;
@@ -6,6 +16,8 @@
     background-color: rgb(43, 135, 209);
     height: 540px;
     cursor: pointer;
+
+
 
     &.await {
         background-color: $color-error;
@@ -19,13 +31,97 @@
         background-color: $color-success;
     }
 
+    &.result {
+        background-color: $color-neutral;
+
+    }
+
     &.ended {
         background-color: $color-neutral;
         cursor: auto;
+
+        .reaction__text {
+            &__title {
+
+                margin-top: 0px;
+                margin-bottom: 40px;
+            }
+        }
     }
 
-    &__title {
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
 
-        color: $color-2;
+        * {
+            color: $color-2;
+        }
+
+        &__average {
+            margin-top: 40px;
+            font-size: map-get($font-size, size4);
+            font-weight: 500;
+        }
+
+        &__title {
+            font-size: map-get($font-size, size1);
+            font-weight: 500;
+            color: $color-2;
+            margin: 10px;
+        }
+
+        &__paragraph {
+            font-size: map-get($font-size, size4);
+            font-weight: 500;
+            color: $color-2;
+        }
+
+        i {
+            font-size: 6rem;
+            color: white;
+
+            &.pulse {
+                opacity: 1;
+
+                animation: pulseOpacity 1100ms linear infinite alternate;
+            }
+        }
+
+        &__buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+
+            .save,
+            .again {
+                padding: 15px 30px;
+                border-radius: 3px;
+                margin: 5px;
+                font-weight: 600;
+                font-size: map-get($font-size, size5);
+                cursor: pointer;
+                transition: background-color 0.2s;
+                color: $color-3;
+
+                &:hover {
+                    transition: background-color 0.2s;
+                    background-color: $color-2;
+                }
+            }
+
+            .save {
+                background-color: $color-save;
+
+            }
+
+            .again {
+                background-color: $color-again;
+
+            }
+        }
     }
 }
