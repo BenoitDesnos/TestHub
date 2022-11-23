@@ -1,16 +1,16 @@
+import { Outlet } from "react-router-dom";
 import GameChoice from "../components/GameChoice";
-import Navigation from "../components/Navigation";
-import ReactionTest from "./../components/games/ReactionTest";
+import Header from "../layout/Header";
 
 function Home() {
   return (
-    <main className="home">
-      <header>
-        <Navigation />
-      </header>
-      <ReactionTest />
-      <GameChoice />
-    </main>
+    <>
+      <Header />
+      <main className="home">
+        <Outlet />
+        <GameChoice />
+      </main>
+    </>
   );
 }
 
