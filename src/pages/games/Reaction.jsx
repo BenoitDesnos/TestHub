@@ -1,5 +1,5 @@
 import ReactionTest from "../../components/games/ReactionTest";
-import BestScore from "./../../components/BestScore";
+import BestScore from "../../components/BestScore";
 import { useEffect, useState } from "react";
 
 function Reaction() {
