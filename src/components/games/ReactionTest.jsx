@@ -93,13 +93,16 @@ function Reaction({ setBest }) {
       storedResults = [];
       storedResults.push(averageResult());
     }
-    console.log(storedResults);
     setBest(Math.min(...storedResults));
-
     let stringifiedStoredResults = JSON.stringify(storedResults);
     localStorage.setItem("savedAverage", stringifiedStoredResults);
+    resetGame();
+  }
+
+  function resetGame() {
     setTestState("start");
     setAttempt(0);
+    setResults([]);
   }
 
   return (
@@ -131,14 +134,14 @@ function Reaction({ setBest }) {
         </div>
       ) : testState === "await" ? (
         <div className="reaction__text">
-          <i class="fa-solid fa-ellipsis "></i>
+          <i className="fa-solid fa-ellipsis "></i>
           <h1 className="reaction__text__title">Attendez le vert !</h1>
         </div>
       ) : testState === "error" ? (
         <h1 className="reaction__text__title">Trop tôt..</h1>
       ) : testState === "react" ? (
         <div className="reaction__text">
-          <i class="fa-solid fa-ellipsis"></i>
+          <i className="fa-solid fa-ellipsis"></i>
           <h1 className="reaction__text__title">Clique !</h1>
         </div>
       ) : testState === "result" ? (
@@ -167,13 +170,7 @@ function Reaction({ setBest }) {
             <button className="save" onClick={() => saveResults()}>
               Save score
             </button>
-            <button
-              className="again"
-              onClick={() => {
-                setTestState("start");
-                setAttempt(0);
-              }}
-            >
+            <button className="again" onClick={() => resetGame()}>
               Try again
             </button>
           </div>
