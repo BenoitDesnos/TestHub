@@ -13,10 +13,10 @@ function Reaction() {
   }, []);
 
   return (
-    <section className="home">
+    <>
       <ReactionTest setBest={setBest} />
       <BestScore best={best} />
-    </section>
+    </>
   );
 }
 
