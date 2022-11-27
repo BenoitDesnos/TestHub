@@ -2,8 +2,10 @@
 @import "./utils/settings";
 @import "./utils/mixins";
 @import "./utils/typography";
+@import "./utils/animations";
 @import "./components/navigation";
 @import "./components/gameChoice";
 @import "./components/reaction";
 @import "./components/bestScore";
+@import "./components/numberMemory";
 @import "./pages/home";

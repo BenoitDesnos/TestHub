@@ -1,0 +1,40 @@
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes standardFeedbackNegative {
+  0% {
+    background: rgb(206, 38, 54);
+  }
+  100% {
+    background: rgb(43, 135, 209);
+  }
+}
+
+@keyframes standardFeedbackPositive {
+  0% {
+    background: rgb(43, 135, 209);
+  }
+  50% {
+    background: rgb(58, 164, 249);
+  }
+  100% {
+    background: rgb(43, 135, 209);
+  }
+}
+
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
