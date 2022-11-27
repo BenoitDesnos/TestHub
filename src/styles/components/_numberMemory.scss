@@ -1,0 +1,189 @@
+.numbermemory__container,
+.numbermemory__start--wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 540px;
+  background-color: $color-neutral;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  text-align: center;
+  line-height: 1.3;
+  padding: 20px;
+  margin: 0 auto;
+}
+.numbermemory__start--wrapper {
+  align-items: center;
+}
+.numbermemory__animated--container {
+  opacity: 0;
+  animation: slideFadeIn 0.2s ease-in-out forwards;
+}
+@for $index from 1 to 12 {
+  .numbermemory__animated--container
+    .numbermemory__fadeitem:nth-of-type(#{$index}) {
+    opacity: 0;
+  }
+}
+
+@for $index from 1 to 12 {
+  .numbermemory__animated--container
+    .numbermemory__fadeitem:nth-of-type(#{$index}) {
+    animation-delay: #{$index * 0.2}s;
+    animation-name: slideFadeIn;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: 0.3s;
+  }
+}
+
+.numbermemory__initial--title,
+.numbermemory__subtitle {
+  margin: 0;
+  cursor: pointer;
+  color: $color-2;
+  text-align: center;
+  font-weight: 400;
+}
+.numbermemory__initial--title {
+  margin: 30px 0px 0px;
+  font-size: 80px;
+}
+.numbermemory__bignumber {
+  font-size: 100px;
+}
+.numbermemory__subtitle {
+  font-size: 24px;
+}
+.numbermemory__correct--answer {
+  text-decoration: none;
+}
+.numbermemory__wrong--answer {
+  text-decoration: line-through;
+}
+.numberMemory__endGame--label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: $color-again;
+
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.numbermemory__faint--label {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.3;
+}
+.numbermemory__label--bigsize {
+  font-size: 20px;
+}
+.numbermemory__message {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $color-2;
+  margin-bottom: -5px;
+}
+.numbermemory__hero--icon {
+  width: 100px;
+  height: 100px;
+  font-size: 18px;
+  cursor: pointer;
+  color: $color-2;
+  text-align: center;
+}
+.numbermemory__hero--wrapper {
+  animation: 1s ease-in-out 0s infinite alternate none running pulse;
+}
+.numbermemory__button--cta {
+  margin: 30px 0px 0px;
+  padding: 12px 30px;
+  color: rgb(51, 51, 51) !important;
+  background: $color-save;
+  text-decoration: none !important;
+  text-align: center;
+  display: inline-block;
+  border: medium none;
+  border-radius: 3px;
+  transition: background 0.1s linear 0s;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: inherit;
+  line-height: 1.3;
+}
+.numbermemory__button--cta:hover {
+  background: $color-2;
+}
+.numbermemory__button--secondarycolor {
+  color: rgb(51, 51, 51);
+  background: rgba(255, 255, 255, 0.5);
+}
+.numbermemory__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+.numbermemory__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1010px;
+  margin: 0 auto;
+}
+.numbermemory__input {
+  width: 1010px;
+  margin: 30px 0px 0px;
+  padding: 10px;
+  background: rgba(0, 0, 100, 0.2);
+  border-radius: 3px;
+  text-align: center;
+  font-size: 48px;
+  color: white;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+  appearance: none;
+  border: 1px solid rgb(204, 204, 204);
+}
+.numbermemory__number,
+.numbermemory__number--answer,
+.numbermemory__number--level {
+  font-size: 40px;
+  font-weight: 400;
+  cursor: pointer;
+  color: $color-2;
+  margin-bottom: 15px;
+}
+.numbermemory__number--answer {
+  color: $color-3;
+}
+.numbermemory__number--level {
+  font-size: 60px;
+  margin: 30px 30px;
+}
+.progress-bar {
+  background: $color-again;
+  width: 100px;
+}
+.numbermemory__feedback--wrong {
+  animation: standardFeedbackNegative 0.2s ease-in-out forwards,
+    slideFadeIn 0.2s ease-in-out forwards;
+}
+.numbermemory__feedback--correct {
+  animation: standardFeedbackPositive 0.2s ease-in-out forwards,
+    slideFadeIn 0.2s ease-in-out forwards;
+}
