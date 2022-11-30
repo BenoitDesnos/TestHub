@@ -1,6 +1,6 @@
-function BestScore({ best }) {
-  return best ? (
-    <p className="best__score">Your best score is : {best} ms.</p>
+function BestScore({ message }) {
+  return message ? (
+    <p className="best__score">{message}</p>
   ) : (
     <p className="best__score">Your best score is :</p>
   );

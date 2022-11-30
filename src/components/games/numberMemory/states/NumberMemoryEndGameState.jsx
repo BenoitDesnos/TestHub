@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { saveResults } from "../../../tools/saveTools";
 import { NumberMemoryContext } from "../NumberMemoryContext";
 
 function NumberMemoryEndGameState() {
@@ -33,7 +34,14 @@ function NumberMemoryEndGameState() {
   };
 
   const handleSaveScore = () => {
-    window.location = "/";
+    if (saveResults("savedNumberMemory", gameState.score)) {
+      setGameState((prevState) => {
+        return {
+          ...prevState,
+          bestScore: gameState.score,
+        };
+      });
+    }
   };
 
   return (

@@ -7,6 +7,7 @@ const NumberMemoryProvider = (props) => {
     state: "initial",
     level: 0,
     score: 0,
+    bestScore: localStorage.getItem("savedNumberMemory") || 0,
     numberToFind: null,
     answer: null,
   });

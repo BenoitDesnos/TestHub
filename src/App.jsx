@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Reaction from "./pages/games/Reaction";
 
 import NotFound from "./components/error/NotFound";
-import NumberMemory from "./components/games/numberMemory/NumberMemory";
+import NumberMemory from "./pages/games/NumberMemory";
 
 function App() {
   return (

@@ -15,7 +15,9 @@ function Reaction() {
   return (
     <>
       <ReactionTest setBest={setBest} />
-      <BestScore best={best} />
+      <BestScore
+        message={best ? `Your best score is : ${best} ms.` : undefined}
+      />
     </>
   );
 }
