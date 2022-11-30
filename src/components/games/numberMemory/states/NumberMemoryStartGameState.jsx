@@ -4,9 +4,16 @@ import { getRandomNumberInRange } from "../numberMemoryTool";
 import ProgressBar from "../ProgressBar";
 
 function NumberMemoryStartGameState() {
-  const timerBeforeStart = 2000; //in milliseconds
-
   const { gameState, setGameState } = useContext(NumberMemoryContext);
+  const scaleTimeWithLevel = (initialTime, level, percentage) => {
+    return initialTime + ((initialTime * level) / 100) * percentage - level;
+  };
+  const scaleTimePercent = 25;
+  const timerBeforeStart = scaleTimeWithLevel(
+    2000,
+    gameState.level - 1,
+    scaleTimePercent
+  ); //in milliseconds + percentage of time to wait before starting the game
   const [currentTimer, setCurrentTimer] = useState(0);
   const [currentNumber, setCurrentNumber] = useState(null);
 
