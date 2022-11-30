@@ -9,6 +9,11 @@ function GameChoice() {
           <h3>Reaction time</h3>
           <p>Testez vos réflèxes visuels</p>
         </Link>
+        <Link to="/numberMemory" className="games__card">
+          <i className="fa-solid fa-database"></i>
+          <h3>Number Memory</h3>
+          <p>Souvenez-vous du nombre le plus grand possible.</p>
+        </Link>
         <Link to="/" className="games__card disabled">
           <i className="fa-solid fa-crosshairs"></i>
           <h3>Aim trainer</h3>
@@ -18,11 +23,6 @@ function GameChoice() {
           <i className="fa-solid fa-eye"></i>
           <h3>Visual Memory</h3>
           <p>Souvenez-vous des positions des carrés !</p>
-        </Link>
-        <Link to="/" className="games__card disabled">
-          <i className="fa-solid fa-database"></i>
-          <h3>Number Memory</h3>
-          <p>Souvenez-vous du nombre le plus grand possible.</p>
         </Link>
         <Link to="/" className="games__card disabled">
           <i className="fa-solid fa-book"></i>
