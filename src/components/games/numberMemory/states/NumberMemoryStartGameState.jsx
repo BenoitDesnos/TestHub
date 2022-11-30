@@ -11,7 +11,6 @@ function NumberMemoryStartGameState() {
   const [currentNumber, setCurrentNumber] = useState(null);
 
   const startGame = () => {
-    console.log("Start game");
     setGameState((prevState) => {
       return { ...prevState, state: "playing", numberToFind: currentNumber };
     });

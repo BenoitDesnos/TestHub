@@ -5,7 +5,6 @@ function NumberMemoryInitialState() {
   const { setGameState } = useContext(NumberMemoryContext);
 
   const handleStartGame = () => {
-    console.log("Start game");
     setGameState((prevState) => {
       return { ...prevState, state: "start", level: 1 };
     });
