@@ -14,7 +14,7 @@ function GameChoice() {
           <h3>Number Memory</h3>
           <p>Souvenez-vous du nombre le plus grand possible.</p>
         </Link>
-        <Link to="/" className="games__card disabled">
+        <Link to="/aimTrainer" className="games__card ">
           <i className="fa-solid fa-crosshairs"></i>
           <h3>Aim trainer</h3>
           <p>A quelle vitesse pouvez vous détruire les cibles?</p>

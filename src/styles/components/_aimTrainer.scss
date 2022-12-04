@@ -1,0 +1,107 @@
+.aim {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(43, 135, 209);
+    height: 540px;
+    cursor: pointer;
+
+
+    .fa-bullseye {
+        font-size: 100px;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        max-width: 970px;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        * {
+            color: $color-2;
+        }
+
+        &__average {
+            margin-top: 40px;
+            font-size: map-get($font-size, size4);
+            font-weight: 500;
+        }
+
+        &__title {
+            font-size: map-get($font-size, size1);
+            font-weight: 500;
+            color: $color-2;
+            margin: 10px;
+
+            @media screen and (max-width: 850px) {
+                font-size: map-get($font-size, size1) * 0.4;
+                text-align: center;
+            }
+
+
+        }
+
+        &__paragraph {
+            font-size: map-get($font-size, size4);
+            font-weight: 500;
+            color: $color-2;
+
+            @media screen and (max-width: 850px) {
+                font-size: map-get($font-size, size4) * 0.5;
+                text-align: center;
+            }
+        }
+
+        i {
+            font-size: 6rem;
+            color: white;
+
+            &.absolute {
+                position: absolute;
+
+                transform: translate(-50%, -50%);
+
+            }
+        }
+
+        &__buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+
+            .save,
+            .again {
+                padding: 15px 30px;
+                border-radius: 3px;
+                margin: 5px;
+                font-weight: 600;
+                font-size: map-get($font-size, size5);
+                cursor: pointer;
+                transition: background-color 0.2s;
+                color: $color-3;
+
+                &:hover {
+                    transition: background-color 0.2s;
+                    background-color: $color-2;
+                }
+            }
+
+            .save {
+                background-color: $color-save;
+
+            }
+
+            .again {
+                background-color: $color-again;
+
+            }
+        }
+    }
+}
