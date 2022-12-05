@@ -1,26 +1,25 @@
+import BestScore from "../../components/BestScore";
+import { useEffect, useState } from "react";
+import AimTrainerTest from "../../components/games/aimTrainer/AimTrainerTest";
 
-/* import BestScore from "../../components/BestScore";
-import { useEffect, useState } from "react"; */
-import AimTrainerTest from '../../components/games/aimTrainer/AimTrainerTest';
-
-function Reaction() {
-/*   const [best, setBest] = useState();
+function AimTrainer() {
+  const [best, setBest] = useState();
 
   useEffect(() => {
-    if (localStorage.key("savedAverage")) {
-      let storedResults = JSON.parse(localStorage.getItem("savedAverage"));
+    if (localStorage.getItem("bestAim")) {
+      let storedResults = JSON.parse(localStorage.getItem("bestAim"));
       setBest(Math.min(...storedResults));
     }
-  }, []); */
+  }, []);
 
   return (
     <>
-      <AimTrainerTest/>
-     {/*  <BestScore
+      <AimTrainerTest setBest={setBest} />
+      <BestScore
         message={best ? `Your best score is : ${best} ms.` : undefined}
-      /> */}
+      />
     </>
   );
 }
 
-export default Reaction;
+export default AimTrainer;

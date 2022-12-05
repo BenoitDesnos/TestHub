@@ -1,4 +1,4 @@
-import ReactionTest from "../../components/games/ReactionTest";
+import ReactionTest from "../../components/games/Reaction/ReactionTest";
 import BestScore from "../../components/BestScore";
 import { useEffect, useState } from "react";
 
@@ -6,7 +6,8 @@ function Reaction() {
   const [best, setBest] = useState();
 
   useEffect(() => {
-    if (localStorage.key("savedAverage")) {
+    if (localStorage.getItem("savedAverage")) {
+      console.log(localStorage.key("savedAverage"));
       let storedResults = JSON.parse(localStorage.getItem("savedAverage"));
       setBest(Math.min(...storedResults));
     }
