@@ -82,7 +82,7 @@ function AimTrainerTest({ setBest }) {
         <div className="aim__text">
           <h1 className="aim__text__title">Aim Trainer</h1>
           <i
-            className="fa-solid fa-bullseye"
+            className="fa-solid fa-bullseye pulse"
             onClick={(e) => {
               handletestState(e);
               targetPositionGenerator();
