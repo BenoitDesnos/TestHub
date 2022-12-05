@@ -7,7 +7,6 @@ function Reaction() {
 
   useEffect(() => {
     if (localStorage.getItem("savedAverage")) {
-      console.log(localStorage.key("savedAverage"));
       let storedResults = JSON.parse(localStorage.getItem("savedAverage"));
       setBest(Math.min(...storedResults));
     }

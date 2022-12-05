@@ -71,6 +71,11 @@
             font-size: 6rem;
             color: white;
             caret-color: transparent;
+            z-index: 2;
+
+            @media screen and (max-width: 850px) {
+                font-size: 4rem;
+            }
 
             &.absolute {
                 position: absolute;
@@ -87,10 +92,11 @@
         &__volume {
             position: absolute;
             bottom: 10px;
-            left: -40px;
+            left: 10px;
             font-size: 2rem;
             cursor: pointer;
             color: rgba(255, 255, 255, 0.384);
+            z-index: 1;
 
             &:hover {
                 color: white;

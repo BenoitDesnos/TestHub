@@ -43,12 +43,11 @@ function AimTrainerTest({ setBest }) {
   }
 
   function targetPositionGenerator() {
-    let randomX = Number((Math.random() * 80 + 10).toFixed(0));
-    let randomY = Number((Math.random() * 80 + 10).toFixed(0));
+    let randomX = Number((Math.random() * 70 + 15).toFixed(0));
+    let randomY = Number((Math.random() * 70 + 15).toFixed(0));
     const target = document.querySelector(".fa-bullseye");
     target.style.left = `${randomX}%`;
     target.style.top = `${randomY}%`;
-    console.log(randomX, randomY);
   }
 
   function averageResult() {
@@ -90,8 +89,8 @@ function AimTrainerTest({ setBest }) {
             }}
           ></i>
           <div className="aim__text__paragraph">
-            <p>Hit {attempt} targets as quickly as you can.</p>
-            <p>Click the target above to begin</p>
+            <p>Touchez {attempt} cibles aussi vite que possible</p>
+            <p>Appuyez sur la cible ci-dessus pour commencer</p>
           </div>
           {isSoundOn ? (
             <i
