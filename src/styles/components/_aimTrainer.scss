@@ -1,50 +1,16 @@
-@keyframes pulseOpacity {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0.5;
-    }
-}
-
-.reaction {
+.aim {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(43, 135, 209);
     height: 540px;
-    cursor: pointer;
+    cursor: crosshair;
+    position: relative;
 
-    &.await {
-        background-color: $color-error;
-    }
 
-    &.error {
-        background-color: $color-neutral;
-    }
-
-    &.react {
-        background-color: $color-success;
-    }
-
-    &.result {
-        background-color: $color-neutral;
-
-    }
-
-    &.ended {
-        background-color: $color-neutral;
-        cursor: auto;
-
-        .reaction__text {
-            &__title {
-
-                margin-top: 0px;
-                margin-bottom: 40px;
-            }
-        }
+    .fa-bullseye {
+        font-size: 100px;
     }
 
     &__text {
@@ -53,6 +19,11 @@
         justify-content: center;
         align-items: center;
         opacity: 1;
+        max-width: 970px;
+        width: 100%;
+        height: 90%;
+        bottom: 0;
+        position: absolute;
 
         * {
             color: $color-2;
@@ -82,6 +53,7 @@
             font-size: map-get($font-size, size4);
             font-weight: 500;
             color: $color-2;
+            margin-top: 20px;
 
             @media screen and (max-width: 850px) {
                 font-size: map-get($font-size, size4) * 0.5;
@@ -89,13 +61,45 @@
             }
         }
 
-        i {
+        &__count {
+            position: absolute;
+            top: -35px;
+        }
+
+
+        .fa-bullseye {
             font-size: 6rem;
             color: white;
+            caret-color: transparent;
+            z-index: 2;
+
+            @media screen and (max-width: 850px) {
+                font-size: 4rem;
+            }
+
+            &.absolute {
+                position: absolute;
+                transform: translate(-50%, -50%);
+            }
 
             &.pulse {
                 opacity: 1;
                 animation: pulseOpacity 1100ms linear infinite alternate;
+            }
+        }
+
+
+        &__volume {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.384);
+            z-index: 1;
+
+            &:hover {
+                color: white;
             }
         }
 

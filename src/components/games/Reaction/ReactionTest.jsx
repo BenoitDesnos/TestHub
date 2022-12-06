@@ -130,6 +130,8 @@ function Reaction({ setBest }) {
           <h1 className="reaction__text__title">Reaction Time Test</h1>
           <p className="reaction__text__paragraph">
             Quand la couleur devient verte, cliquez aussi vite que possible.
+            <br />
+            Cliquez n'importe ou pour commencer.
           </p>
         </div>
       ) : testState === "await" ? (
