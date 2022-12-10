@@ -5,6 +5,7 @@ import Reaction from "./pages/games/Reaction";
 import NotFound from "./components/error/NotFound";
 import NumberMemory from "./pages/games/NumberMemory";
 import AimTrainer from "./pages/games/AimTrainer";
+import VerbalMemory from "./pages/games/VerbalMemory";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="reaction" element={<Reaction />} />
           <Route path="numberMemory" element={<NumberMemory />} />
           <Route path="aimTrainer" element={<AimTrainer />} />
+          <Route path="verbalMemory" element={<VerbalMemory />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
