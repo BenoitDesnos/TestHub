@@ -1,0 +1,44 @@
+.verbalmemory__row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.verbalmemory__stat {
+  color: #fff;
+}
+
+.verbalmemory__end--title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  margin-top: 1.5rem;
+}
+.verbalmemory__result {
+  color: #fff;
+  font-size: 6vh;
+  margin-bottom: 2rem;
+}
+.verbalmemory__faint--label {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.5;
+}
+.verbalmemory__subtitle {
+  color: #fff;
+  font-weight: 400;
+  font-size: 300%;
+}
+
+@media only screen and (min-width: 768px) {
+  .numbermemory__bignumber {
+    font-size: 100px;
+  }
+  .verbalmemory__result {
+    font-size: 80px;
+  }
+}
