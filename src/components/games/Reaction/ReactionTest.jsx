@@ -74,7 +74,6 @@ function Reaction({ setBest }) {
     return () => {
       clearTimeout(myTimeOut.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [secondClick]);
 
   function averageResult() {

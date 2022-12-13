@@ -13,59 +13,42 @@ function VerbalMemoryPlayingState() {
 
   const [word, setWord] = useState("");
 
+  const generateNewWord = () => {
+    console.log("generateNewWord");
+    let newWord = pickNewWord(5);
+    let updatedWordSeen = gameState.wordSeen;
+    updatedWordSeen.push(newWord);
+    setGameState((prevState) => {
+      return {
+        ...prevState,
+        wordSeen: updatedWordSeen,
+      };
+    });
+
+    setWord(newWord);
+    setItsNewWord(true);
+  };
+
   const getWord = () => {
-    console.log("getWord");
     const randomBoolean = getRandomBoolean(newWordProbability);
 
     if (gameState.wordSeen.length === 0 || gameState.score === 0) {
-      let newWord = pickNewWord(5);
-      let updatedWordSeen = gameState.wordSeen;
-      updatedWordSeen.push(newWord);
-      setGameState((prevState) => {
-        return {
-          ...prevState,
-          wordSeen: updatedWordSeen,
-        };
-      });
-
-      setWord(newWord);
-      setItsNewWord(true);
+      generateNewWord();
       return true;
     }
 
     if (!randomBoolean || gameState.wordSeen.length === 0) {
-      let newWord = pickNewWord(5);
-      let updatedWordSeen = gameState.wordSeen;
-      updatedWordSeen.push(newWord);
-      setGameState((prevState) => {
-        return {
-          ...prevState,
-          wordSeen: updatedWordSeen,
-        };
-      });
-
-      setWord(newWord);
-      setItsNewWord(true);
+      generateNewWord();
       return true;
     } else {
       let newWord = pickRandomWordInTheSeenList(gameState.wordSeen);
 
       if (newWord === false) {
-        console.log("new word from seens is false");
-        newWord = pickNewWord(5);
-        let updatedWordSeen = gameState.wordSeen;
-        updatedWordSeen.push(newWord);
-        setGameState((prevState) => {
-          return {
-            ...prevState,
-            wordSeen: updatedWordSeen,
-          };
-        });
-        setItsNewWord(true);
+        generateNewWord();
       } else {
+        setWord(newWord);
         setItsNewWord(false);
       }
-      setWord(newWord);
       return true;
     }
   };
@@ -81,8 +64,8 @@ function VerbalMemoryPlayingState() {
     }
   };
 
+  //Generate a new word on first render
   let isFirstRender = true;
-
   useEffect(() => {
     if (isFirstRender) {
       getWord();
@@ -108,14 +91,12 @@ function VerbalMemoryPlayingState() {
         };
       });
     }
-
     checkEndGame();
     getWord();
   };
 
   const handleNew = (e) => {
     e.preventDefault();
-    console.log(gameState.wordSeen);
     if (itsNewWord) {
       setGameState((prevState) => {
         return {
