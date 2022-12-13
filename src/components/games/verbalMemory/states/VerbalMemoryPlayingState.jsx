@@ -9,15 +9,15 @@ import { VerbalMemoryContext } from "../VerbalMemoryContext";
 function VerbalMemoryPlayingState() {
   const newWordProbability = 0.55;
   const { setGameState, gameState } = useContext(VerbalMemoryContext);
-  const [isInit, setIsInit] = useState(false);
   const [itsNewWord, setItsNewWord] = useState(false);
 
   const [word, setWord] = useState("");
 
   const getWord = () => {
+    console.log("getWord");
     const randomBoolean = getRandomBoolean(newWordProbability);
 
-    if (gameState.wordSeen.length === 0) {
+    if (gameState.wordSeen.length === 0 || gameState.score === 0) {
       let newWord = pickNewWord(5);
       let updatedWordSeen = gameState.wordSeen;
       updatedWordSeen.push(newWord);
@@ -81,16 +81,18 @@ function VerbalMemoryPlayingState() {
     }
   };
 
+  let isFirstRender = true;
+
   useEffect(() => {
-    if (isInit === false) {
+    if (isFirstRender) {
       getWord();
-      setIsInit(true);
+      isFirstRender = false;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInit]);
+  }, []);
 
   const handleSeen = (e) => {
     e.preventDefault();
+    console.log(gameState.wordSeen);
     if (!itsNewWord) {
       setGameState((prevState) => {
         return {
@@ -113,6 +115,7 @@ function VerbalMemoryPlayingState() {
 
   const handleNew = (e) => {
     e.preventDefault();
+    console.log(gameState.wordSeen);
     if (itsNewWord) {
       setGameState((prevState) => {
         return {

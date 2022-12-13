@@ -40,6 +40,15 @@ function GameChoice() {
           <p>A quelle vitesse pouvez vous détruire les cibles?</p>
         </Link>
         <Link
+          to="/verbalMemory"
+          className="games__card"
+          onClick={() => setToTop(!toTop)}
+        >
+          <i className="fa-solid fa-book"></i>
+          <h3>Verbal Memory</h3>
+          <p>Souvenez-vous du plus de mots possible.</p>
+        </Link>
+        <Link
           to="/"
           className="games__card disabled"
           onClick={() => setToTop(!toTop)}
@@ -47,15 +56,6 @@ function GameChoice() {
           <i className="fa-solid fa-eye"></i>
           <h3>Visual Memory</h3>
           <p>Souvenez-vous des positions des carrés !</p>
-        </Link>
-        <Link
-          to="/"
-          className="games__card disabled"
-          onClick={() => setToTop(!toTop)}
-        >
-          <i className="fa-solid fa-book"></i>
-          <h3>Verbal Memory</h3>
-          <p>Souvenez-vous du plus de mots possible.</p>
         </Link>
         <Link
           to="/"
