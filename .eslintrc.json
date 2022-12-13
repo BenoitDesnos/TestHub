@@ -13,7 +13,6 @@
   "plugins": ["react", "jest"],
   "rules": {
     "react-hooks/exhaustive-deps": 0,
-    "react/react-in-jsx-scope": "off",
     "react/prop-types": "off"
   }
 }

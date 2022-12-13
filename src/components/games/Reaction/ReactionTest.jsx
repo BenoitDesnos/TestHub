@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 function Reaction({ setBest }) {
   const [testState, setTestState] = useState("start");
   const [firstClick, setFirstClick] = useState(0);
