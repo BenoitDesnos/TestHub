@@ -130,7 +130,7 @@ function Reaction({ setBest }) {
           <p className="reaction__text__paragraph">
             Quand la couleur devient verte, cliquez aussi vite que possible.
             <br />
-            Cliquez n'importe ou pour commencer.
+            Cliquez n&apos;importe ou pour commencer.
           </p>
         </div>
       ) : testState === "await" ? (
