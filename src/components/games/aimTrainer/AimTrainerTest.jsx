@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 function AimTrainerTest({ setBest }) {
   const [testState, setTestState] = useState("start");
   const [firstClick, setFirstClick] = useState(0);

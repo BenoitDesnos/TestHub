@@ -33,14 +33,12 @@ function NumberMemoryStartGameState() {
     return () => {
       clearInterval(timerTick);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (currentTimer >= timerBeforeStart) {
       startGame();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTimer]);
 
   const getFilledPercentage = () => {
