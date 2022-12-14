@@ -1,3 +1,4 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import GameChoice from "../components/GameChoice";
 import Header from "../layout/Header";

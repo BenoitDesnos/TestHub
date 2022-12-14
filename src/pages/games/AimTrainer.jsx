@@ -1,5 +1,5 @@
 import BestScore from "../../components/BestScore";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AimTrainerTest from "../../components/games/aimTrainer/AimTrainerTest";
 
 function AimTrainer() {

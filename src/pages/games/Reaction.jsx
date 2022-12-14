@@ -1,6 +1,6 @@
 import ReactionTest from "../../components/games/Reaction/ReactionTest";
 import BestScore from "../../components/BestScore";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Reaction() {
   const [best, setBest] = useState();
