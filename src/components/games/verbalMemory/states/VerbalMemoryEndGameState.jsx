@@ -13,6 +13,7 @@ function VerbalMemoryEndGameState() {
         state: "initial",
         lives: 3,
         score: 0,
+        wordSeen: [],
       };
     });
   };
