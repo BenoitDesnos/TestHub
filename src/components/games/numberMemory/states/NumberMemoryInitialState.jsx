@@ -32,13 +32,14 @@ function NumberMemoryInitialState() {
       </div>
       <h1 className="numbermemory__initial--title">Number Memory</h1>
       <h2 className="numbermemory__subtitle">
-        The average person can remember 7 numbers at once. Can you do more ?
+        La personne moyenne peut se souvenir de 7 numéros à la fois. Pouvez-vous
+        faire plus ?
       </h2>
       <button
         onClick={() => handleStartGame()}
         className="numbermemory__button--cta"
       >
-        Start
+        Commencer
       </button>
     </div>
   );

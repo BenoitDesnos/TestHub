@@ -131,13 +131,13 @@ function VerbalMemoryPlayingState() {
       <div className="verbalmemory__row">
         <input
           type="submit"
-          value="SEEN"
+          value="VU"
           className="numbermemory__button--cta"
           onClick={handleSeen}
         />
         <input
           type="submit"
-          value="NEW"
+          value="NOUVEAU"
           className="numbermemory__button--cta"
           onClick={handleNew}
         />

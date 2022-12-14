@@ -20,8 +20,10 @@ function NumberMemoryPlayingState() {
 
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="numbermemory__form">
-      <h2 className="numbermemory__subtitle">What was the number ?</h2>
-      <p className="numbermemory__faint--label ">Press enter to submit</p>
+      <h2 className="numbermemory__subtitle">Quel était le nombre ?</h2>
+      <p className="numbermemory__faint--label ">
+        Appuyer sur entrer pour valider
+      </p>
       <input
         ref={numberInput}
         type="text"
@@ -30,7 +32,7 @@ function NumberMemoryPlayingState() {
       />
       <input
         type="submit"
-        value="Submit"
+        value="Valider"
         className="numbermemory__button--cta"
       />
     </form>

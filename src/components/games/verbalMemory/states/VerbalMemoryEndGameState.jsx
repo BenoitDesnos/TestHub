@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { saveResults } from "../../../tools/saveTools";
 import { VerbalMemoryContext } from "../VerbalMemoryContext";
 
 function VerbalMemoryEndGameState() {
   const { gameState, setGameState } = useContext(VerbalMemoryContext);
-  const [isCorrect] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,32 +55,24 @@ function VerbalMemoryEndGameState() {
         {gameState.score} words
       </p>
       <p className="numbermemory__message numbermemory__fadeitem">
-        Save your score to see how you compare.
+        Enregistrez votre meilleur score pour pouvoir vous comparer.
       </p>
       <form onSubmit={(e) => handleSubmit(e)}>
-        {isCorrect ? (
+        <div className="numbermemory__row numbermemory__fadeitem">
           <input
-            type="submit"
-            value="Next"
+            type="button"
+            value="Sauvegarder"
+            onClick={() => {
+              handleSaveScore();
+            }}
             className="numbermemory__button--cta numbermemory__fadeitem"
           />
-        ) : (
-          <div className="numbermemory__row numbermemory__fadeitem">
-            <input
-              type="button"
-              value="Save score"
-              onClick={() => {
-                handleSaveScore();
-              }}
-              className="numbermemory__button--cta numbermemory__fadeitem"
-            />
-            <input
-              type="submit"
-              value="Try again"
-              className="numbermemory__button--cta numbermemory__button--secondarycolor numbermemory__fadeitem"
-            />
-          </div>
-        )}
+          <input
+            type="submit"
+            value="Rejouer"
+            className="numbermemory__button--cta numbermemory__button--secondarycolor numbermemory__fadeitem"
+          />
+        </div>
       </form>
     </div>
   );

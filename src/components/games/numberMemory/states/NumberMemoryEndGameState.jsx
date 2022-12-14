@@ -53,13 +53,13 @@ function NumberMemoryEndGameState() {
       }`}
     >
       <p className="numbermemory__faint--label numbermemory__label--bigsize numbermemory__fadeitem">
-        Number
+        Nombre à trouver
       </p>
       <h3 className="numbermemory__number numbermemory__fadeitem">
         {gameState.numberToFind}
       </h3>
       <p className="numbermemory__faint--label numbermemory__label--bigsize numbermemory__fadeitem">
-        Your answer
+        Votre réponse
       </p>
       <h3
         className={`numbermemory__number--answer numbermemory__fadeitem ${
@@ -71,23 +71,23 @@ function NumberMemoryEndGameState() {
         {gameState.answer}
       </h3>
       <p className="numbermemory__number--level numbermemory__fadeitem">
-        Level {gameState.level}
+        Niveau {gameState.level}
       </p>
       <p className="numbermemory__message numbermemory__fadeitem">
-        Save your score to see how you compare.
+        Enregistrez votre meilleur score pour pouvoir vous comparer.
       </p>
       <form onSubmit={(e) => handleSubmit(e)}>
         {isCorrect ? (
           <input
             type="submit"
-            value="Next"
+            value="Suivant"
             className="numbermemory__button--cta numbermemory__fadeitem"
           />
         ) : (
           <div className="numbermemory__row numbermemory__fadeitem">
             <input
               type="button"
-              value="Save score"
+              value="Sauvegarder"
               onClick={() => {
                 handleSaveScore();
               }}
@@ -95,7 +95,7 @@ function NumberMemoryEndGameState() {
             />
             <input
               type="submit"
-              value="Try again"
+              value="Rejouer"
               className="numbermemory__button--cta numbermemory__button--secondarycolor numbermemory__fadeitem"
             />
           </div>

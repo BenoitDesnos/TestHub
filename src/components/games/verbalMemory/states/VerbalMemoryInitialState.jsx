@@ -33,14 +33,15 @@ function VerbalMemoryInitialState() {
       </div>
       <h1 className="numbermemory__initial--title">Verbal Memory Test</h1>
       <h2 className="numbermemory__subtitle">
-        You will be shown words, one at a time. If you&apos;ve seen a word
-        during the test, click SEEN if it&apos;s a new word, click NEW
+        Vous allez voir des mots, un à la fois. Si vous avez déjà vu ce mot
+        durant le test, cliquez sur &quot;VU&quot;. Si vous ne l&apos;avez pas
+        vu, cliquez sur &quot;NOUVEAU&quot;.
       </h2>
       <button
         onClick={() => handleStartGame()}
         className="numbermemory__button--cta"
       >
-        Start
+        Commencer
       </button>
     </div>
   );

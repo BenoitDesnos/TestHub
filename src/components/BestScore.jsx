@@ -4,7 +4,7 @@ function BestScore({ message }) {
   return message ? (
     <p className="best__score">{message}</p>
   ) : (
-    <p className="best__score">Your best score is :</p>
+    <p className="best__score">Pas encore de meilleur score.</p>
   );
 }
 

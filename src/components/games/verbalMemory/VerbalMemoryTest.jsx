@@ -13,7 +13,7 @@ function VerbalMemoryTest() {
       <BestScore
         message={
           gameState.bestScore
-            ? `Your best score is : ${gameState.bestScore}.`
+            ? `Meilleur score : ${gameState.bestScore}.`
             : undefined
         }
       />
