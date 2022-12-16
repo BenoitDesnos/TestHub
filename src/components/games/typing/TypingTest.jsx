@@ -6,24 +6,64 @@ function typingTrainerTest(/* { setBest } */) {
   /*   const [testState, setTestState] = useState("start"); */
   const testState = "start";
   const [Paragraph, setParagraph] = useState([]);
-  /*  const [count, setCount] = useState(0); */
-  const [keyPressed, setKeyPressed] = useState("");
+  const [count, setCount] = useState(0);
 
   function choseParagraph() {
-    console.log(ParagraphList);
     let random = Number((Math.random() * ParagraphList.length).toFixed(0));
     setParagraph(ParagraphList[random].split(""));
   }
   useEffect(() => {
     choseParagraph();
-    console.log(Paragraph, "test");
   }, []);
 
+  const handleKeyDown = (e) => {
+    checkValidity(e.key, e);
+  };
+
   useEffect(() => {
-    document.addEventListener("keyup", (e) => {
-      setKeyPressed(e.key);
-    });
-  }, []);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [Paragraph, count]);
+
+  function checkValidity(key, e) {
+    const letters = document.querySelectorAll(".await");
+    console.log(Paragraph[count], key, letters[count]);
+    switch (key) {
+      case "Shift":
+        break;
+      case "CapsLock":
+        break;
+      case "AltGraph":
+        break;
+      case " ":
+        if (key === Paragraph[count]) {
+          setCount((count) => count + 1);
+          letters[count].classList.add("success");
+        } else {
+          setCount((count) => count + 1);
+          letters[count].classList.add("error");
+        }
+        e.preventDefault();
+        break;
+      case "Backspace":
+        setCount((count) => count - 1);
+        letters[count - 1].classList.remove("error");
+        letters[count - 1].classList.remove("success");
+        break;
+      case Paragraph[count]:
+        setCount((count) => count + 1);
+        letters[count].classList.add("success");
+        break;
+
+      default:
+        console.log("test");
+        setCount((count) => count + 1);
+        letters[count].classList.add("error");
+        break;
+    }
+  }
 
   /*   function adjustCount(amount) {
     setCount((currentCount) => {
@@ -74,7 +114,7 @@ function typingTrainerTest(/* { setBest } */) {
     <section className="typing">
       {testState === "start" ? (
         <div className="typing__text">
-          <h1 className="typing__text__title">Typing Test {keyPressed}</h1>
+          <h1 className="typing__text__title">Typing Test {count}</h1>
           <div className="typing__text__paragraph">
             <p>Combien de mots par minute peux-tu écrire?</p>
           </div>
