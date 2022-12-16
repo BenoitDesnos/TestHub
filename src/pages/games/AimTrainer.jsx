@@ -4,9 +4,6 @@ import AimTrainerTest from "../../components/games/aimTrainer/AimTrainerTest";
 
 function AimTrainer() {
   const [best, setBest] = useState();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("bestAim")) {

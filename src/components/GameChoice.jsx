@@ -58,8 +58,8 @@ function GameChoice() {
           <p>Souvenez-vous des positions des carrés !</p>
         </Link>
         <Link
-          to="/"
-          className="games__card disabled"
+          to="/typing"
+          className="games__card "
           onClick={() => setToTop(!toTop)}
         >
           <i className="fa-solid fa-keyboard"></i>
