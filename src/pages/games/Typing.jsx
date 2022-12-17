@@ -6,8 +6,8 @@ function Typing() {
   const [best, setBest] = useState();
 
   useEffect(() => {
-    if (localStorage.getItem("typingBest")) {
-      let storedResults = JSON.parse(localStorage.getItem("typingBest"));
+    if (localStorage.getItem("bestTyping")) {
+      let storedResults = JSON.parse(localStorage.getItem("bestTyping"));
       setBest(Math.max(...storedResults));
     }
   }, []);
@@ -16,7 +16,7 @@ function Typing() {
     <>
       <TypingTest setBest={setBest} />
       <BestScore
-        message={best ? `Your best score is : ${best} ms.` : undefined}
+        message={best ? `Your best score is : ${best} MPS.` : undefined}
       />
     </>
   );

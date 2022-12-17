@@ -1,24 +1,103 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { ParagraphList } from "./data/ParagraphList";
+import StopWatch from "./StopWatch";
 
-function typingTrainerTest(/* { setBest } */) {
-  /*   const [testState, setTestState] = useState("start"); */
-  const testState = "start";
+function typingTrainerTest({ setBest }) {
+  const [testState, setTestState] = useState("start");
+
   const [Paragraph, setParagraph] = useState([]);
   const [count, setCount] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const [errors, setErrors] = useState(0);
 
   function choseParagraph() {
     let random = Number((Math.random() * ParagraphList.length).toFixed(0));
     setParagraph(ParagraphList[random].split(""));
   }
-  useEffect(() => {
-    choseParagraph();
-  }, []);
 
   const handleKeyDown = (e) => {
     checkValidity(e.key, e);
   };
+  const handleClick = () => {
+    const letters = document.querySelectorAll(".typing__text__game > span");
+    console.log(letters[count]);
+    letters[count].classList.add("current");
+  };
+
+  const handleSuccess = (letters) => {
+    setCount((count) => count + 1);
+    letters[count].classList.add("success");
+    handleCurrent(letters);
+  };
+  const handleCurrent = (letters) => {
+    letters[count + 1].classList.add("current");
+    letters[count].classList.remove("current");
+  };
+  const handleError = (letters) => {
+    setCount((count) => count + 1);
+    letters[count].classList.add("error");
+    handleCurrent(letters);
+    setErrors((current) => current + 1);
+  };
+  const handleDelete = (letters) => {
+    let previousInputClass = letters[count - 1].className;
+    if (previousInputClass === "error") {
+      setErrors((current) => current - 1);
+    }
+    setCount((count) => count - 1);
+    console.log(letters[count - 1].className);
+    letters[count - 1].classList.remove("error");
+    letters[count - 1].classList.remove("success");
+    letters[count].classList.remove("current");
+    letters[count - 1].classList.add("current");
+  };
+
+  function checkValidity(keyPressed, e) {
+    const letters = document.querySelectorAll(".typing__text__game > span");
+    if (
+      keyPressed !== "Shift" &&
+      keyPressed !== "CapsLock" &&
+      keyPressed !== "Dead"
+    ) {
+      handletestState(letters);
+    }
+    const keyToMatch = Paragraph[count];
+    console.log(Paragraph[count], keyPressed, letters[count]);
+    switch (keyPressed) {
+      case "Shift":
+        break;
+      case "CapsLock":
+        break;
+      case "AltGraph":
+        break;
+      case "Dead":
+        break;
+      case " ":
+        if (keyPressed === keyToMatch) {
+          handleSuccess(letters);
+        } else {
+          handleError(letters);
+        }
+        e.preventDefault();
+        break;
+      case "Backspace":
+        handleDelete(letters);
+        break;
+      case keyToMatch:
+        handleSuccess(letters);
+
+        break;
+      default:
+        handleError(letters);
+        break;
+    }
+  }
+
+  useEffect(() => {
+    choseParagraph();
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
@@ -27,141 +106,108 @@ function typingTrainerTest(/* { setBest } */) {
     };
   }, [Paragraph, count]);
 
-  function checkValidity(key, e) {
-    const letters = document.querySelectorAll(".await");
-    console.log(Paragraph[count], key, letters[count]);
-    switch (key) {
-      case "Shift":
+  function handletestState(letters) {
+    switch (testState) {
+      case "start":
+        setTestState("play");
         break;
-      case "CapsLock":
+      case "play":
+        letters.length - 1 === count ? setTestState("ended") : null;
         break;
-      case "AltGraph":
+      case "ended":
+        calculWordPerMinute();
         break;
-      case " ":
-        if (key === Paragraph[count]) {
-          setCount((count) => count + 1);
-          letters[count].classList.add("success");
-        } else {
-          setCount((count) => count + 1);
-          letters[count].classList.add("error");
-        }
-        e.preventDefault();
-        break;
-      case "Backspace":
-        setCount((count) => count - 1);
-        letters[count - 1].classList.remove("error");
-        letters[count - 1].classList.remove("success");
-        break;
-      case Paragraph[count]:
-        setCount((count) => count + 1);
-        letters[count].classList.add("success");
-        break;
-
       default:
-        console.log("test");
-        setCount((count) => count + 1);
-        letters[count].classList.add("error");
         break;
     }
   }
 
-  /*   function adjustCount(amount) {
-    setCount((currentCount) => {
-      return currentCount + amount;
-    });
-    console.log(count);
-  } */
+  const calculWordPerMinute = () => {
+    let secondsInFraction = (1 * seconds) / 60;
 
-  /*    function handletestState(e) {   
-      switch (testState) {
-        case "start":          
-          break;
-        case "play":          
-          break;
-        case "ended":
-          break;
-        default:
-          break;
-      }
-    }  */
+    let nbrOfWords = count / 6;
+    let total = nbrOfWords / (minutes + secondsInFraction + errors / 60);
 
-  /*  function averageResult() {
-    let total = secondClick - firstClick;
-    let totalAverage = total / attempt;
-    let totalAvgRounded = Number(totalAverage.toFixed(0));
-    return totalAvgRounded;
-  } */
+    if (total > 5000 || isNaN(total)) {
+      return 65;
+    } else if (total <= 0) {
+      return 0;
+    }
+    return total.toFixed(0);
+  };
 
-  /*  function saveResults() {
-    let storedResults = JSON.parse(localStorage.getItem("besttyping"));
-    if (localStorage.getItem("besttyping")) {
-      storedResults.push(averageResult());
+  function saveResults() {
+    let storedResults = JSON.parse(localStorage.getItem("bestTyping"));
+    if (localStorage.getItem("bestTyping")) {
+      storedResults.push(calculWordPerMinute());
     } else {
       storedResults = [];
-      storedResults.push(averageResult());
+      storedResults.push(calculWordPerMinute());
     }
-    setBest(Math.min(...storedResults));
+    setBest(Math.max(...storedResults));
     let stringifiedStoredResults = JSON.stringify(storedResults);
-    localStorage.setItem("besttyping", stringifiedStoredResults);
+    localStorage.setItem("bestTyping", stringifiedStoredResults);
     resetGame();
   }
   function resetGame() {
     setTestState("start");
-    setAttempt(30);
-  } */
+    choseParagraph();
+    setCount(0);
+    setErrors(0);
+    setMinutes(0);
+    setSeconds(0);
+  }
 
   return (
     <section className="typing">
       {testState === "start" ? (
         <div className="typing__text">
-          <h1 className="typing__text__title">Typing Test {count}</h1>
+          <h1 className="typing__text__title">Typing Test</h1>
           <div className="typing__text__paragraph">
             <p>Combien de mots par minute peux-tu écrire?</p>
           </div>
-          <div className="typing__text__game">
-            {Paragraph.map((input, index) => (
-              <span key={input + index} className="await">
-                {input}
-              </span>
+          <div className="typing__text__game" onClick={() => handleClick()}>
+            {Paragraph.map((letter, index) => (
+              <span key={letter + index}>{letter}</span>
             ))}
           </div>
           <p>Commence à écrire pour débuter</p>
         </div>
       ) : testState === "play" ? (
         <div className="typing__text">
-          <h1 className="typing__text__title">Typing Test</h1>
+          <h1 className="typing__text__title">{calculWordPerMinute()}</h1>
           <div className="typing__text__paragraph">
-            <p>Combien de mots par minute peux-tu écrire?</p>
+            <p>Combien de mots par minute peux-tu écrire?{count}</p>
           </div>
           <div className="typing__text__game">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed
-              amet, tempora, distinctio reiciendis est natus nemo repellat cum
-              consequatur laborum, porro unde numquam eaque assumenda officiis
-              odit quidem esse sint mollitia recusandae. Dicta rerum mollitia
-              exercitationem hic nulla repellat laudantium, voluptate, animi
-              impedit velit suscipit minima perspiciatis corporis, nam facere.
-            </p>
+            {Paragraph.map((letter, index) => (
+              <span key={letter + index}>{letter}</span>
+            ))}
           </div>
-          <p>Commence à écrire pour débuter</p>
+
+          <StopWatch
+            minutes={minutes}
+            setMinutes={setMinutes}
+            seconds={seconds}
+            setSeconds={setSeconds}
+          />
         </div>
       ) : testState === "ended" ? (
         <div className="typing__text">
-          <h1 className="typing__text__title">Typing Test</h1>
-          <div className="typing__text__paragraph">
-            <p>Combien de mots par minute peux-tu écrire?</p>
+          <i className="fa-solid fa-keyboard"></i>
+          <p className="typing__text__average">Nombre de mots par secondes</p>
+          <h1 className="typing__text__title">{calculWordPerMinute()} MPS</h1>
+          <p className="typing__text__paragraph">
+            Sauvegarde ton score pour te vanter
+          </p>
+          <div className="typing__text__buttons">
+            <button className="save" onClick={() => saveResults()}>
+              Save score
+            </button>
+            <button className="again" onClick={() => resetGame()}>
+              Try again
+            </button>
           </div>
-          <div className="typing__text__game">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed
-              amet, tempora, distinctio reiciendis est natus nemo repellat cum
-              consequatur laborum, porro unde numquam eaque assumenda officiis
-              odit quidem esse sint mollitia recusandae. Dicta rerum mollitia
-              exercitationem hic nulla repellat laudantium, voluptate, animi
-              impedit velit suscipit minima perspiciatis corporis, nam facere.
-            </p>
-          </div>
-          <p>Commence à écrire pour débuter</p>
         </div>
       ) : null}
     </section>

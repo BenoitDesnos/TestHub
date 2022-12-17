@@ -31,27 +31,48 @@
                 background-color: white;
             }
 
-            .await {
+            span {
                 display: inline;
                 line-height: 30px;
                 font-weight: 600;
                 letter-spacing: 1px;
                 color: rgba(0, 0, 0, 0.541);
+                caret-color: transparent;
+            }
+
+            .current {
+                border-left: 2px black solid;
+                animation: pulse 1s linear 0s infinite;
+
+
+
+                @keyframes pulse {
+                    0% {
+                        border-left: 2px black solid;
+                    }
+
+                    49% {
+                        border-left: 2px black solid;
+                    }
+
+                    50% {
+                        border-left: 2px transparent solid;
+                    }
+
+                    100% {
+                        border-left: 2px transparent solid;
+                    }
+                }
             }
 
             .error {
-                display: inline;
 
-                line-height: 30px;
-                font-weight: 600;
                 background-color: $color-error;
                 color: white;
             }
 
             .success {
-                display: inline;
-                line-height: 30px;
-                font-weight: 600;
+
                 background-color: $color-success;
                 color: black;
             }
@@ -99,7 +120,7 @@
         }
 
 
-        .fa-bullseye {
+        .fa-keyboard {
             font-size: 6rem;
             color: white;
             caret-color: transparent;

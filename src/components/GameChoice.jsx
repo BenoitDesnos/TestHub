@@ -49,15 +49,6 @@ function GameChoice() {
           <p>Souvenez-vous du plus de mots possible.</p>
         </Link>
         <Link
-          to="/"
-          className="games__card disabled"
-          onClick={() => setToTop(!toTop)}
-        >
-          <i className="fa-solid fa-eye"></i>
-          <h3>Visual Memory</h3>
-          <p>Souvenez-vous des positions des carrés !</p>
-        </Link>
-        <Link
           to="/typing"
           className="games__card "
           onClick={() => setToTop(!toTop)}
@@ -65,6 +56,15 @@ function GameChoice() {
           <i className="fa-solid fa-keyboard"></i>
           <h3>Typing</h3>
           <p>Combien de mots par minutes peux-tu écrire?</p>
+        </Link>
+        <Link
+          to="/"
+          className="games__card disabled"
+          onClick={() => setToTop(!toTop)}
+        >
+          <i className="fa-solid fa-eye"></i>
+          <h3>Visual Memory</h3>
+          <p>Souvenez-vous des positions des carrés !</p>
         </Link>
       </div>
     </>
