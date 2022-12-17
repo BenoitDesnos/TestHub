@@ -1,4 +1,4 @@
-import ReactionTest from "../../components/games/Reaction/ReactionTest";
+import ReactionTest from "../../components/games/reaction/ReactionTest";
 import BestScore from "../../components/BestScore";
 import React, { useEffect, useState } from "react";
 
