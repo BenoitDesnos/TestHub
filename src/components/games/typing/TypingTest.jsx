@@ -22,7 +22,7 @@ function typingTrainerTest({ setBest }) {
   };
   const handleClick = () => {
     const letters = document.querySelectorAll(".typing__text__game > span");
-    console.log(letters[count]);
+
     letters[count].classList.add("current");
   };
 
@@ -47,7 +47,7 @@ function typingTrainerTest({ setBest }) {
       setErrors((current) => current - 1);
     }
     setCount((count) => count - 1);
-    console.log(letters[count - 1].className);
+
     letters[count - 1].classList.remove("error");
     letters[count - 1].classList.remove("success");
     letters[count].classList.remove("current");
@@ -64,7 +64,7 @@ function typingTrainerTest({ setBest }) {
       handletestState(letters);
     }
     const keyToMatch = Paragraph[count];
-    console.log(Paragraph[count], keyPressed, letters[count]);
+
     switch (keyPressed) {
       case "Shift":
         break;
@@ -177,7 +177,7 @@ function typingTrainerTest({ setBest }) {
         <div className="typing__text">
           <h1 className="typing__text__title">{calculWordPerMinute()}</h1>
           <div className="typing__text__paragraph">
-            <p>Combien de mots par minute peux-tu écrire?{count}</p>
+            <p>Combien de mots par minute peux-tu écrire?</p>
           </div>
           <div className="typing__text__game">
             {Paragraph.map((letter, index) => (
