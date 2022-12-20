@@ -74,6 +74,7 @@ function Reaction({ setBest }) {
     return () => {
       clearTimeout(myTimeOut.current);
     };
+    // eslint-disable-next-line
   }, [secondClick]);
 
   function averageResult() {
