@@ -166,11 +166,16 @@ function typingTrainerTest({ setBest }) {
           <div className="typing__text__paragraph">
             <p>Combien de mots par minute peux-tu écrire?</p>
           </div>
+          {window.innerWidth > 768 ? 
           <div className="typing__text__game" onClick={() => handleClick()}>
             {Paragraph.map((letter, index) => (
               <span key={letter + index}>{letter}</span>
-            ))}
+              ))}
+          </div> : <div className="typing__text__game" >
+            <span>Ce test doit être effectué avec un clavier,
+              merci de vous connecter à un ordinateur ou élargissez votre fenêtre et rafraichissez la page !</span>
           </div>
+            }
           <p>Commence à écrire pour débuter</p>
         </div>
       ) : testState === "play" ? (
