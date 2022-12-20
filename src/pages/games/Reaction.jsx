@@ -1,9 +1,10 @@
-import ReactionTest from "../../components/games/reaction/ReactionTest";
+import ReactionTest from "../../components/games/Reaction/ReactionTest";
 import BestScore from "../../components/BestScore";
 import React, { useEffect, useState } from "react";
 
 function Reaction() {
   const [best, setBest] = useState();
+  //
 
   useEffect(() => {
     if (localStorage.getItem("savedAverage")) {
