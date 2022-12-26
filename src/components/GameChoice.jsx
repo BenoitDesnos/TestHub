@@ -58,8 +58,8 @@ function GameChoice() {
           <p>Combien de mots par minutes peux-tu écrire?</p>
         </Link>
         <Link
-          to="/"
-          className="games__card disabled"
+          to="/visualMemory"
+          className="games__card"
           onClick={() => setToTop(!toTop)}
         >
           <i className="fa-solid fa-eye"></i>

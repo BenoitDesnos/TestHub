@@ -14,7 +14,7 @@ function Navigation() {
             }
           >
             <i className="fa-solid fa-bolt-lightning"></i>
-            <span className="nav__home__link__text">testHub</span>
+            <span className="nav__home__link__text">Test Hub</span>
           </NavLink>
         </li>
       </ul>
