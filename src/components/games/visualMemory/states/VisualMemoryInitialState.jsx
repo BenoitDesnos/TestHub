@@ -6,7 +6,7 @@ function VisualMemoryInitialState() {
 
   const handleStartGame = () => {
     setGameState((prevState) => {
-      return { ...prevState, state: "playing", level: 10 };
+      return { ...prevState, state: "playing", level: 1 };
     });
   };
 

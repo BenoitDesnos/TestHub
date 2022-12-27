@@ -43,7 +43,10 @@ function Board({ rowLength, cellsToFind, restartGame }) {
   }, [restarGame]);
 
   useEffect(() => {
-    if (gameState.cellsFound === gameState.cellsToFinds) {
+    if (
+      gameState.cellsFound === gameState.cellsToFinds &&
+      gameState.cellsToFinds > 0
+    ) {
       setGameState((prevState) => {
         return {
           ...prevState,
