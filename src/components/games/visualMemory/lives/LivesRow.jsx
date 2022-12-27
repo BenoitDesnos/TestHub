@@ -10,7 +10,11 @@ function LivesRow({ livesMax, currentLives }) {
     }
     return livesArray;
   };
-  return <aside className="lives__row">Lives : {makeLives()}</aside>;
+  return (
+    <aside className="lives__row">
+      <span className="lives__title">Lives</span> {makeLives()}
+    </aside>
+  );
 }
 
 export default LivesRow;

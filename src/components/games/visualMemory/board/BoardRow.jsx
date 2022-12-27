@@ -1,11 +1,17 @@
 import React from "react";
 import BoardCell from "./BoardCell";
 
-function BoardRow({ rowLength }) {
+function BoardRow({ rowLength, callRestartEvent, callRefreshEvent }) {
   const makeRow = (rowLength) => {
     const row = [];
     for (let i = 0; i < rowLength; i++) {
-      row.push(<BoardCell key={i} />);
+      row.push(
+        <BoardCell
+          key={i}
+          callRestartEvent={callRestartEvent}
+          callRefreshEvent={callRefreshEvent}
+        />
+      );
     }
     return row;
   };

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import VisualMemoryEndGameState from "./states/VisualMemoryEndGameState";
 import VisualMemoryInitialState from "./states/VisualMemoryInitialState";
 import VisualMemoryPlayingState from "./states/VisualMemoryPlayingState";
 import { VisualMemoryContext } from "./VisualMemoryContext";
@@ -11,7 +12,9 @@ function VisualMemoryContent() {
         <VisualMemoryInitialState />
       ) : gameState.state === "playing" ? (
         <VisualMemoryPlayingState />
-      ) : gameState.state === "endGame" ? null : null}
+      ) : gameState.state === "endGame" ? (
+        <VisualMemoryEndGameState />
+      ) : null}
     </div>
   );
 }

@@ -10,6 +10,9 @@ const VisualMemoryProvider = (props) => {
     lives: 3,
     score: 0,
     bestScore: localStorage.getItem("savedVisualMemory") || 0,
+    restCellsToActivate: 0,
+    cellsFound: 0,
+    cellsToFinds: 0,
   });
 
   return (
