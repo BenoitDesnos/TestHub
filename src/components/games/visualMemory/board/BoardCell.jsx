@@ -53,7 +53,7 @@ function BoardCell({ callRestartEvent, callRefreshEvent }) {
   useEffect(() => {
     const activationTimer = setInterval(() => {
       tryToActivate(activationTimer);
-    }, 1000);
+    }, 250);
 
     return () => {
       clearInterval(activationTimer);
