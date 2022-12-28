@@ -62,16 +62,41 @@ export const Config = [
   {
     level: 13,
     row: 6,
-    cellsToFind: 10,
+    cellsToFind: 15,
   },
   {
     level: 14,
-    row: 6,
+    row: 7,
     cellsToFind: 11,
   },
   {
     level: 15,
-    row: 6,
+    row: 7,
+    cellsToFind: 12,
+  },
+  {
+    level: 16,
+    row: 7,
+    cellsToFind: 13,
+  },
+  {
+    level: 17,
+    row: 7,
+    cellsToFind: 14,
+  },
+  {
+    level: 18,
+    row: 7,
+    cellsToFind: 15,
+  },
+  {
+    level: 19,
+    row: 7,
+    cellsToFind: 16,
+  },
+  {
+    level: 20,
+    row: 8,
     cellsToFind: 12,
   },
 ];
