@@ -29,7 +29,7 @@ function BoardCell({ callRestartEvent, callRefreshEvent }) {
 
   const tryToActivate = (timer) => {
     if (gameState.restCellsToActivate > 0) {
-      const randomActivation = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
+      const randomActivation = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
       if (
         randomActivation === 1 &&
         !isActive &&
@@ -53,7 +53,7 @@ function BoardCell({ callRestartEvent, callRefreshEvent }) {
   useEffect(() => {
     const activationTimer = setInterval(() => {
       tryToActivate(activationTimer);
-    }, 250);
+    }, 100);
 
     return () => {
       clearInterval(activationTimer);
