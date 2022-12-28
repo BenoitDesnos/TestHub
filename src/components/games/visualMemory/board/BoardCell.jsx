@@ -61,6 +61,7 @@ function BoardCell({ callRestartEvent, callRefreshEvent }) {
   }, [gameState.restCellsToActivate]);
 
   const handleCellClick = () => {
+    if (showCell) return;
     if (cellDiscover) return;
     setCellDiscover(true);
     setShowCell(!showCell);
