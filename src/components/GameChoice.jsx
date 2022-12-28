@@ -64,7 +64,7 @@ function GameChoice() {
         >
           <i className="fa-solid fa-eye"></i>
           <h3>Visual Memory</h3>
-          <p>Souvenez-vous des positions des carrés !</p>
+          <p>Souvenez-vous des positions des carrés ! </p>
         </Link>
       </div>
     </>

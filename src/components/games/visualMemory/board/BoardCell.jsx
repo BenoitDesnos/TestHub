@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { randInt } from "three/src/math/MathUtils";
 import { VisualMemoryContext } from "../VisualMemoryContext";
 
 function BoardCell({ callRestartEvent, callRefreshEvent }) {
@@ -16,11 +15,11 @@ function BoardCell({ callRestartEvent, callRefreshEvent }) {
     if (!isFound) {
       showTimer = setTimeout(() => {
         setShowCell(true);
-      }, 2500);
+      }, 2000);
 
       unshowTimer = setTimeout(() => {
         setShowCell(false);
-      }, 6000);
+      }, 5000);
     }
     return () => {
       clearTimeout(showTimer);
@@ -30,8 +29,12 @@ function BoardCell({ callRestartEvent, callRefreshEvent }) {
 
   const tryToActivate = (timer) => {
     if (gameState.restCellsToActivate > 0) {
-      const randomActivation = randInt(0, 4);
-      if (randomActivation === 1) {
+      const randomActivation = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
+      if (
+        randomActivation === 1 &&
+        !isActive &&
+        gameState.restCellsToActivate > 0
+      ) {
         setIsActive(true);
         setGameState((prevState) => {
           return {
@@ -50,7 +53,7 @@ function BoardCell({ callRestartEvent, callRefreshEvent }) {
   useEffect(() => {
     const activationTimer = setInterval(() => {
       tryToActivate(activationTimer);
-    }, 1500);
+    }, 1000);
 
     return () => {
       clearInterval(activationTimer);
