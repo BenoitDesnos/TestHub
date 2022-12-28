@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { randInt } from "three/src/math/MathUtils";
 import { VisualMemoryContext } from "../VisualMemoryContext";
 
 function BoardCell({ callRestartEvent, callRefreshEvent }) {
@@ -30,7 +29,7 @@ function BoardCell({ callRestartEvent, callRefreshEvent }) {
 
   const tryToActivate = (timer) => {
     if (gameState.restCellsToActivate > 0) {
-      const randomActivation = randInt(0, 4);
+      const randomActivation = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
       if (randomActivation === 1) {
         setIsActive(true);
         setGameState((prevState) => {
