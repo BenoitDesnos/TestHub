@@ -8,6 +8,7 @@ import NumberMemory from "./pages/games/NumberMemory";
 import AimTrainer from "./pages/games/AimTrainer";
 import VerbalMemory from "./pages/games/VerbalMemory";
 import Typing from "./pages/games/Typing";
+import VisualMemory from "./pages/games/VisualMemory";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="aimTrainer" element={<AimTrainer />} />
           <Route path="verbalMemory" element={<VerbalMemory />} />
           <Route path="typing" element={<Typing />} />
+          <Route path="visualMemory" element={<VisualMemory />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
